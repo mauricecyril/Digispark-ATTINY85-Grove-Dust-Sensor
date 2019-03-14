@@ -47,13 +47,14 @@ void loop() {
   // put your main code here, to run repeatedly:
   duration = pulseIn(grovePin, LOW);
   lowpulseoccupancy = lowpulseoccupancy+duration;
+
+  //blink(3, 1000); // blink (number of times, milliseconds)
     
- if ((millis()-starttime) > sampletime_ms)//if the sampel time == 30s
+ if ((millis()-starttime) > sampletime_ms)//if the sample time == 30s
     {
         ratio = lowpulseoccupancy/(sampletime_ms*10.0);  // Integer percentage 0=>100
         concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62; // using spec sheet curve
   
-
         // Change LED colour based on Concentration Values
         // High Dust Concentration Over 20K
         if (concentration >= 10000)
@@ -81,15 +82,18 @@ void loop() {
             // Set Colour to GREEN
             setColor(0, 255, 0);
         }
-
+        
         else
         {
             // Set Colour to Blue
             setColor(0, 0, 255);
         }
+
+        // Reset Values and calculate start time
+        //concentration = 0;
+        //ratio = 0;
         lowpulseoccupancy = 0;
-        ratio = 0;
-        concentration = 0;
+        starttime = millis();
     }  
 }
 
@@ -103,4 +107,18 @@ void setColor(int red, int green, int blue)
   analogWrite(redLED, red);
   analogWrite(greenLED, green);
   analogWrite(blueLED, blue);  
+}
+
+void blink(int times, int milliseconds)
+{
+  int i = 0;
+  while (i < times)
+    {
+      i = i + 1;
+      setColor(0, 255, 0);  // green
+      delay(milliseconds);
+      setColor(0, 0, 0);  // Off
+      delay(milliseconds);
+    }
+    
 }
