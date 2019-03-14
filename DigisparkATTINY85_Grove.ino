@@ -87,6 +87,9 @@ void loop() {
             // Set Colour to Blue
             setColor(0, 0, 255);
         }
+        lowpulseoccupancy = 0;
+        ratio = 0;
+        concentration = 0;
     }  
 }
 
