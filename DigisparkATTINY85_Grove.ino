@@ -56,15 +56,67 @@ void loop() {
         concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62; // using spec sheet curve
   
         // Change LED colour based on Concentration Values
-        // High Dust Concentration Over 20K
-        if (concentration >= 10000)
+        // High Dust Concentration Over 15K
+        if (concentration >= 15000)
+        {
+            // Set Colour to blink RED, white and off three times then stay red
+            setColor(255, 0, 0);
+            delay(500)
+            setColor(255, 0, 0);  // white
+            delay(500);
+            setColor(255, 0, 0);  
+            delay(500);
+            setColor(0, 0, 0);  // Off
+            delay(500);
+            setColor(255, 255, 255);  // white
+            delay(500);
+            setColor(255, 0, 0);  
+           delay(500);
+           setColor(0, 0, 0);  // Off
+           delay(500);
+           setColor(255, 255, 255);  // white
+            delay(500);
+            setColor(255, 0, 0);  
+           delay(500);
+           setColor(0, 0, 0);  // Off
+           delay(500);
+           setColor(255, 0, 0);
+
+        }
+
+        // High Dust Concentration Over 10K Turn Red
+        else if (concentration >= 10000 && concentration < 15000)
         {
             // Set Colour to RED
             setColor(255, 0, 0);
         }
 
-
-        else if (concentration >= 3000 && concentration < 10000)
+        else if (concentration >= 5000 && concentration < 10000)
+        {
+            // Blink Orange 
+            setColor(255, 127, 0);
+            delay(500)
+            setColor(0, 0, 0);  
+            delay(500);
+            setColor(255, 127, 0);  
+            delay(500);
+            setColor(0, 0, 0);  
+            delay(500);
+            setColor(255, 127, 0);  
+            delay(500);
+            setColor(0, 0, 0);  
+           delay(500);
+           setColor(255, 127, 0); 
+           delay(500);
+           setColor(0, 0, 0);  
+            delay(500);
+            setColor(255, 127, 0);  
+           delay(500);
+           setColor(0, 0, 0); 
+           delay(500);
+           setColor(255, 127, 0);
+        }
+        else if (concentration >= 3000 && concentration < 5000)
         {
             // Set Colour to ORANGE
             setColor(255, 127, 0);
