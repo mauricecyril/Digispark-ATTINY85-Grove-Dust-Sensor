@@ -61,7 +61,7 @@ void loop() {
         {
             // Set Colour to blink RED, white and off three times then stay red
             setColor(255, 0, 0);
-            delay(500)
+            delay(500);
             setColor(255, 0, 0);  // white
             delay(500);
             setColor(255, 0, 0);  
@@ -95,7 +95,7 @@ void loop() {
         {
             // Blink Orange 
             setColor(255, 127, 0);
-            delay(500)
+            delay(500);
             setColor(0, 0, 0);  
             delay(500);
             setColor(255, 127, 0);  
